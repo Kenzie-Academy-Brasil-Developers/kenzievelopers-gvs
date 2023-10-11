@@ -7,6 +7,7 @@ import { verifyProjectDevId } from "../middlewares/verifyProjectsDevId.middlewar
 
 export const projectsRoutes : Router = Router()
 projectsRoutes.use('/:id', verifyProjectId)
+
 projectsRoutes.post('/', verifyDeveloper ,createProjectController)
 projectsRoutes.get('/:id', getProjectController)
 projectsRoutes.patch('/:id', verifyProjectDevId ,updateProjectController)

@@ -5,8 +5,11 @@ import { Project, ProjectResult } from "../interfaces/project.interface";
 
 export const verifyProjectId = async (req : Request, res : Response, next : NextFunction): Promise<void> => {
     const {id} = req.params
-    const queryResult : ProjectResult = await client.query('SELECT * FROM projects WHERE id = $1',[id])
-
+    console.log(id);
+    
+    const queryResult : ProjectResult = await client.query('SELECT * FROM projects WHERE id = $1;',[id])
+    console.log(queryResult);
+    
     if(!queryResult.rowCount){
         throw new AppError('Project not found.',404)
     }
